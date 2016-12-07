@@ -10,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <title>CustomersDb</title>
+        <title>Customers DB Admin Access</title>
     </head>
     
     <% String table = (String) request.getAttribute("table"); %>
@@ -25,11 +25,10 @@
         
             
             <div class="main">
-                <div class="col-sm-1"></div>
+                <div class="col-sm-1 col-xs-12"></div>
                 <div class="col-sm-10 col-xs-12">
-                    <h1 id="tablehead"> &nbsp; My Players <br></h1><br>
-                <%= table %>
-                </div>
+                    <h1 id="tablehead">My Customers</h1><br>
+                <%= table %></div>
 
                
             </div>

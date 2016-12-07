@@ -9,10 +9,12 @@ and open the template in the editor.
 */
 #header { margin-top:5%;
 background-color: #fafafa;
-border-bottom: 1px solid #eee;
+border-bottom: 1px solid #f5f5f5;
 }
 .main{clear:both;}
 h3 {text-align:center;}
+
+
 
 #myNavbar{
   
@@ -21,6 +23,14 @@ background-color: #f5f5f5;
 border-bottom: 1px solid #e5e5e5;
   
 }
+
+
+table, th, td {
+    border-collapse: collapse;
+   
+}
+
+
 
 #myNavbar ul li a {color:black;}
 
@@ -37,18 +47,19 @@ border-bottom: 1px solid #e5e5e5;}
      margin-top:3%;
 }
 
-#content {background-color:#fafafa;
-border: 2px solid #eee;
+#content {
+
 margin-bottom:5%;
-border-radius:4px;
+
 }
 
 .btn-info {padding:1px; 
           border-radius:3px; 
-          color: #FFF;
-background-color: #0095ff;
-border: 1px solid #07c;
-box-shadow: 0 1px 0 #66bfff;
+border: 1px solid #5aad35;
+box-shadow: 0 1px 0 #6cc644;
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+background-color: #6cc644;
 }
 
 input[type="submit"]{
@@ -65,3 +76,43 @@ margin-top:2%;
     
 
 }
+
+#tablehead {
+    background-color:#fff !important;
+    border: 2px solid #eee !important;
+    border-radius: 4px !important;
+    border-bottom:8px solid dodgerblue !important;
+ padding:10px;
+   font-size:24px;
+    
+}
+
+th{
+   padding-left:18px !important;
+   padding-right:18px !important;
+   
+   text-align:center!important;
+   font-size:12px;
+   border-left:none;
+   border-right:none;
+}
+
+
+
+td{
+   padding-left:22px !important;
+   padding-right:22px !important;
+   border-top:1px solid #eee;
+   border-bottom:1px solid #eee;
+   text-align:center!important;
+   font-size:12px;
+   border-radius:4px;
+}
+
+table {
+    border: 2px solid #eee;
+    border-radius: 4px;
+
+}
+
+

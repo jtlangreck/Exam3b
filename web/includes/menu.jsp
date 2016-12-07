@@ -12,7 +12,7 @@
       
           <li><a href="index.jsp">Home</a></li>
           <li><a href="read">View Customers</a></li>
-          <li><a href="Administration">Administration</a></li>
+          <li><a href="adminread">Administration</a></li>
          
        
       </ul>
