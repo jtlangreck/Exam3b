@@ -11,16 +11,16 @@
       <ul class="nav navbar-nav navbar-left">
       
           <li><a href="index.jsp">Home</a></li>
-          <li><a href="read.jsp">View Customers</a></li>
+          <li><a href="read">View Customers</a></li>
           <li><a href="Administration">Administration</a></li>
          
        
       </ul>
         <ul class="nav navbar-nav navbar-right">
             <li style="margin-top:4%;"><form class="searchform">
-                <label>Search Customers:</label>
-                <input type="text" name="searchVal" value=""/>
-                <input class="submit" type="submit" name="submit" value="Search"/></form>
+                
+                <input class="sbar" type="text" name="searchVal" value="Search Customers!"/>
+                <input class="btn-info" type="submit" name="submit" value="Search"/></form>
             
             </li>
         </ul>

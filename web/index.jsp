@@ -21,6 +21,8 @@
             <div class="main" >
                 <div class="col-xs-2 col-sm-2"></div>
                 <div class="col-sm-8 col-xs-12" align="center" id="content">
+                    
+                    <a href="read.jsp">View Customers</a>
                     <h1>EXAM 3B JACOB LANGRECK</h1>
                     <hr /> 
                     <!-- change text here -->

@@ -28,11 +28,40 @@ border-bottom: 1px solid #e5e5e5;
 background-color: #f5f5f5;
 border-bottom: 1px solid #e5e5e5;}
 
-label {font-size:12px; font-weight: normal!important;}
+.sbar {
+    font-size:12px;
+    border-radius:2px;
+    padding:3px;
+     border: 1px solid lightblue;
+     vertical-align:middle;
+     margin-top:3%;
+}
 
-
-
-#content {background-color:#F5F5F5;
-border: 3px solid #e5e5e5;
+#content {background-color:#fafafa;
+border: 2px solid #eee;
 margin-bottom:5%;
+border-radius:4px;
+}
+
+.btn-info {padding:1px; 
+          border-radius:3px; 
+          color: #FFF;
+background-color: #0095ff;
+border: 1px solid #07c;
+box-shadow: 0 1px 0 #66bfff;
+}
+
+input[type="submit"]{
+   padding:4px;
+    vertical-align: middle;
+margin-top:2%;
+    font-weight: 200;
+  
+    line-height: 1;
+    text-align: center;
+  
+    
+    border-radius: 2px;
+    
+
 }
