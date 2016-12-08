@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dbHelpers.AdminReadQuery;
+import dbHelpers.AddQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,16 +14,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Customers;
 
 /**
  *
  * @author Jake Langreck
  */
-@WebServlet(name = "AdminRead", urlPatterns = {"/adminread"})
-public class AdminRead extends HttpServlet {
+@WebServlet(name = "AddServlet", urlPatterns = {"/addCustomer"})
+public class AddServlet extends HttpServlet {
 
-
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,10 +40,10 @@ public class AdminRead extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Read</title>");            
+            out.println("<title>Servlet AddServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Read at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -67,17 +75,41 @@ public class AdminRead extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            AdminReadQuery rq = new AdminReadQuery();
-            
-            rq.doRead();
-            String table = rq.getHTMLtable();
-            
-            request.setAttribute("table", table);
-            String url = "/AdminRead.jsp";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request,response);
-    }
+        
+          String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String Addr1 = request.getParameter("Addr1");
+        String Addr2 = request.getParameter("Addr2");
+        String City = request.getParameter("City");
+        String State = request.getParameter("State");
+        String Zip = request.getParameter("Zip");
+        String EmailAddr = request.getParameter("EmailAddr");
+        
+   
+        Customers customer = new Customers();
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setAddr1(Addr1);
+        customer.setAddr2(Addr2);
+        customer.setCity(City);
+        customer.setState(State);
+        customer.setZip(Zip);
+        customer.setEmailAddr(EmailAddr);
+        
+    
+        AddQuery aq = new AddQuery();
+        
+      
+        aq.doAdd(customer);
+        
+      
+        String url = "/adminread";
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request, response);
+}
+      
+    
 
     /**
      * Returns a short description of the servlet.
@@ -90,4 +122,3 @@ public class AdminRead extends HttpServlet {
     }// </editor-fold>
 
 }
-

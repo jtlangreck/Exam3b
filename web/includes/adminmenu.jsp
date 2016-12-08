@@ -17,7 +17,7 @@
        
       </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li style="margin-top:4%;"><form name="searchForm" action="search" method="get">
+            <li style="margin-top:4%;"><form name="searchForm" action="adminsearch" method="get">
                 
                 <input class="sbar" type="text" name="searchVal"/>
                 <input class="btn-info" type="submit" name="submit" value="Search"/></form>

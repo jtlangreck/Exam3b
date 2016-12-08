@@ -1,6 +1,9 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dbHelpers;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -13,22 +16,30 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Customers;
 
-public class ReadQuery {
-    private Connection conn;
-    private ResultSet results;
+
+/**
+ *
+ * @author Jake Langreck
+ */
+public class AdminSearchQuery {
     
-    public ReadQuery(){
+   private Connection conn;
+   private ResultSet results;
+   
+   
+    public AdminSearchQuery(){
+        
         Properties props = new Properties(); //MWC
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
             props.load(instr);
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             instr.close();
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String driver = props.getProperty("driver.name");
@@ -38,47 +49,61 @@ public class ReadQuery {
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             conn = DriverManager.getConnection(url, username, password);
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void doRead(){
+        
+        
+        
+   
+    
+    
+    public void doSearch(String name){
+       
+
         try {
-            String query = "SELECT * FROM Customers ORDER BY custID ASC";
+
+            String query = "SELECT * from Customers WHERE UPPER(firstName) LIKE ? OR UPPER(lastName) LIKE ? ORDER BY custID ASC";
+
             PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + name.toUpperCase() + "%");
+            ps.setString(2, "%" + name.toUpperCase() + "%");
             this.results = ps.executeQuery();
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
         
-    }
-    
-    public String getHTMLtable(){
-        String table = "";
-        table+="<table>";
-        table+="<tr class=";
-        table+="'thead'";
-        table+=">";
         
-        table+="<th> ID </th>";
-        table+="<th> First Name </th>";
-        table+="<th> Last Name </th>";
-        table+="<th> Address: </th>";
-        table+="<th> Address2: </th>";
-        table+="<th> City </th>";
-        table+="<th> State </th>";
-        table+="<th> Zip </th>";
-        table+="<th> Email Address </th>";
+    
+    
+    
+    public String getHTMLTable()
+    {
+       String table = "";
+        table+="<table>";
+        table+="<tr>";
+        table+="<th class=adminth> ID </th>";
+        table+="<th class=adminth> First Name </th>";
+        table+="<th class=adminth> Last Name </th>";
+        table+="<th class=adminth> Address: </th>";
+        table+="<th class=adminth> Address2: </th>";
+        table+="<th class=adminth> City </th>";
+        table+="<th class=adminth> State </th>";
+        table+="<th class=adminth> Zip </th>";
+        table+="<th class=adminth> Email Address </th>";
+        table+="<th class=adminth></th>";
        
         table+="</tr>";
         
         try {
             while(this.results.next()) {
-                Customers customer = new Customers();
+                 Customers customer = new Customers();
                 customer.setCustID(this.results.getInt("custID"));
                 customer.setFirstName(this.results.getString("firstName"));
                 customer.setLastName(this.results.getString("lastName"));
@@ -91,57 +116,76 @@ public class ReadQuery {
                 
                 
                 
-                table += "<tr>";
-                table += "<td>";
+               table += "<tr>";
+                table += "<td class=admintd>";
                 table += customer.getCustID();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getFirstName();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getLastName();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getAddr1();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getAddr2();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getCity();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getState();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getZip();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getEmailAddr();
                 table += "</td>";
                 
-              
+                
+                table+="<td class=admintd>";
+                table+= "<div class=dropdown> " +
+  "<button class=btn btn-primary dropdown-toggle type=button data-toggle=dropdown>Options" +
+   "&nbsp" + "<span class=caret></span></button>" +
+ " <ul class=dropdown-menu>"+
+    "<li><a href=#>View</a></li>"+
+    "<li><a href=#>Update</a></li>"+
+    "<li><a href=#>Delete</a></li>"+
+ " </ul>"+
+"</div>"; 
+                       
+          
+                table+= "</td>";
+                
                 
                 table += "</tr>";
                 
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminSearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
         table+="</table>";
                 
-        return table;
+        return table;  
+      
     }
+   
 }
+    
+    
+    
 

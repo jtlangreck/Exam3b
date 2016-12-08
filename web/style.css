@@ -27,6 +27,7 @@ border-bottom: 1px solid #e5e5e5;
 
 table, th, td {
     border-collapse: collapse;
+    border-radius:2px;
    
 }
 
@@ -53,13 +54,14 @@ margin-bottom:5%;
 
 }
 
-.btn-info {padding:1px; 
-          border-radius:3px; 
-border: 1px solid #5aad35;
-box-shadow: 0 1px 0 #6cc644;
+.btn-info {padding:5px; 
+           font-size:11px;
+          border-radius:4px; 
+border: 1px solid #0054b4;
+box-shadow: 0 1px 0 dodgerblue;
 color: #fff;
 text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
-background-color: #6cc644;
+background-color: dodgerblue;
 }
 
 input[type="submit"]{
@@ -97,22 +99,109 @@ th{
    border-right:none;
 }
 
+.adminth{
+   padding-left:18px !important;
+   padding-right:18px !important;
+   
+   text-align:center!important;
+   font-size:12px;
+   border-left:none;
+   border-right:none;
+}
 
+.thead{color: #68777d;
+background-color: #f2f9fc;
+border: 1px solid #c9e6f2;
+border-top-right-radius: 4px;
+border-top-left-radius:4px;
+}
 
 td{
-   padding-left:22px !important;
-   padding-right:22px !important;
-   border-top:1px solid #eee;
-   border-bottom:1px solid #eee;
+   padding-left:24px !important;
+   padding-right:24px !important;
+   border-top:1px solid #c9e6f2;
+   border-bottom:1px solid #c9e6f2;
+   padding:5px;
+   
    text-align:center!important;
    font-size:12px;
    border-radius:4px;
 }
 
+.admintd {
+     padding-left:16px !important;
+   padding-right:18px !important;
+   border-top:1px solid #c9e6f2;
+   border-bottom:1px solid #c9e6f2;
+   padding:6px;
+   text-align:center!important;
+   font-size:12px;
+   border-radius:4px;
+}
+
+.addtd {
+     padding-left:16px !important;
+   padding-right:18px !important;
+
+   border:none;
+   text-align:center!important;
+   font-size:12px;
+   padding:8px;
+   
+}
+
+.addtable {
+    padding:10px;
+}
+
 table {
-    border: 2px solid #eee;
+    border: 1px solid #c9e6f2;
     border-radius: 4px;
 
 }
+#addbn {
+    float:right;
+    color:#fff;
+}
 
+.btn a {
+    color:#fff;
+}
+.btn{
+    padding:3px;
+    font-size:10px;
+    border: 1px solid #0054B4;
+box-shadow: 0 1px 0 dodgerblue;
+color: #fff!important;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+background-color: dodgerblue;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.dropdown-menu{
+    min-width:0;
+    padding:1px; 
+          border-radius:3px; 
+border: 1px solid #0054bc;
+box-shadow: 0 1px 0 dodgerblue;
+color: #fff!important;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+background-color: dodgerblue;
+font-size:11px;
+text-align:center;
+}
+
+#fright {
+    float:right;
+    font-size:12px;
+}
 

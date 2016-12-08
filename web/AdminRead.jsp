@@ -18,7 +18,7 @@
     <body>
         <div class="wrap">
            
-                 <%@ include file="includes/menu.jsp" %> 
+                 <%@ include file="includes/adminmenu.jsp" %> 
              <%@ include file="includes/header.jsp" %> 
             
            
@@ -27,7 +27,8 @@
             <div class="main">
                 <div class="col-sm-1 col-xs-12"></div>
                 <div class="col-sm-10 col-xs-12">
-                    <h1 id="tablehead">My Customers</h1><br>
+                    <h1 id="tablehead">My Customers <span class="btn" id="addbn"><a href="add">Add Customer</a>
+                        </span></h1><br>
                 <%= table %></div>
 
                

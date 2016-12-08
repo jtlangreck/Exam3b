@@ -23,12 +23,12 @@ public class AdminReadQuery {
         try {
             props.load(instr);
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             instr.close();
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String driver = props.getProperty("driver.name");
@@ -38,12 +38,12 @@ public class AdminReadQuery {
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             conn = DriverManager.getConnection(url, username, password);
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void doRead(){
@@ -52,7 +52,7 @@ public class AdminReadQuery {
             PreparedStatement ps = conn.prepareStatement(query);
             this.results = ps.executeQuery();
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -61,15 +61,16 @@ public class AdminReadQuery {
         String table = "";
         table+="<table>";
         table+="<tr>";
-        table+="<th> ID </th>";
-        table+="<th> First Name </th>";
-        table+="<th> Last Name </th>";
-        table+="<th> Address: </th>";
-        table+="<th> Address2: </th>";
-        table+="<th> City </th>";
-        table+="<th> State </th>";
-        table+="<th> Zip </th>";
-        table+="<th class='right'> Email Address </th>";
+        table+="<th class=adminth> ID </th>";
+        table+="<th class=adminth> First Name </th>";
+        table+="<th class=adminth> Last Name </th>";
+        table+="<th class=adminth> Address: </th>";
+        table+="<th class=adminth> Address2: </th>";
+        table+="<th class=adminth> City </th>";
+        table+="<th class=adminth> State </th>";
+        table+="<th class=adminth> Zip </th>";
+        table+="<th class=adminth> Email Address </th>";
+        table+="<th class=adminth></th>";
        
         table+="</tr>";
         
@@ -89,41 +90,56 @@ public class AdminReadQuery {
                 
                 
                 table += "<tr>";
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getCustID();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getFirstName();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getLastName();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getAddr1();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getAddr2();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getCity();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getState();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getZip();
                 table += "</td>";
                 
-                table += "<td>";
+                table += "<td class=admintd>";
                 table += customer.getEmailAddr();
                 table += "</td>";
+                
+                
+                table+="<td class=admintd>";
+                table+= "<div class=dropdown> " +
+  "<button class=btn btn-primary dropdown-toggle type=button data-toggle=dropdown>Options" +
+   "&nbsp" + "<span class=caret></span></button>" +
+ " <ul class=dropdown-menu>"+
+    "<li><a href=#>View</a></li>"+
+    "<li><a href=update?custID=" +customer.getCustID() + ">Update</a></li>"+
+    "<li><a href=delete?custID=" +customer.getCustID() + ">Delete</a></li>"+
+ " </ul>"+
+"</div>"; 
+                       
+          
+                table+= "</td>";
                 
               
                 
@@ -132,7 +148,7 @@ public class AdminReadQuery {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
